@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PNS.mn — Home Services</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+body{background:#f4f6f9;color:#2b2f38;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.topbar{background:#0a6cff;color:#fff;font-size:14px}
+.topbar .wrap{max-width:1100px;margin:0 auto;padding:8px 20px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:flex-end}
+.topbar a{font-weight:600}
+header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);position:sticky;top:0;z-index:10}
+header .wrap{max-width:1100px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo{font-size:26px;font-weight:800;color:#0a6cff;letter-spacing:1px;cursor:pointer}
+.logo span{color:#ff7a00}
+nav a{margin-left:18px;font-weight:600;color:#555;cursor:pointer}
+nav a:hover,nav a.active{color:#0a6cff}
+.hero{background:linear-gradient(120deg,#0a6cff,#3a93ff);color:#fff;text-align:center;padding:55px 20px}
+.hero .crumb{font-size:14px;opacity:.85;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.hero h1{font-size:38px;margin-bottom:10px}
+.hero p{font-size:18px;opacity:.95}
+.container{max-width:1100px;margin:0 auto;padding:50px 20px}
+.container.narrow{max-width:900px}
+.section-title{text-align:center;font-size:30px;margin-bottom:8px;color:#0a6cff}
+.section-sub{text-align:center;color:#888;margin-bottom:40px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
+.card{background:#fff;border-radius:14px;padding:26px;box-shadow:0 6px 20px rgba(0,0,0,.06);transition:.25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(10,108,255,.15)}
+.card h3{font-size:19px;margin-bottom:14px;color:#1a2b4a;border-bottom:2px solid #eef2f8;padding-bottom:10px}
+.card ul{list-style:none;margin-bottom:20px;flex:1}
+.card li{padding:7px 0 7px 24px;position:relative;font-size:14.5px;color:#555}
+.card li:before{content:"\2713";position:absolute;left:0;color:#0a6cff;font-weight:800}
+.btn{display:inline-block;background:#ff7a00;color:#fff;text-align:center;padding:12px;border-radius:8px;font-weight:700;transition:.2s}
+.btn:hover{background:#e56e00}
+.about-card{background:#fff;border-radius:14px;padding:40px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.about-card h2{color:#1a2b4a;margin-bottom:18px;font-size:24px}
+.about-card p{color:#444;margin-bottom:16px;font-size:16px}
+.badge{display:inline-block;background:#eef4ff;color:#0a6cff;font-weight:700;padding:6px 14px;border-radius:20px;font-size:13px;margin:4px 6px 0 0}
+.faq-item{background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.05);margin-bottom:14px;overflow:hidden}
+.faq-q{padding:20px 24px;font-weight:700;color:#1a2b4a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:16.5px}
+.faq-q:hover{color:#0a6cff}
+.faq-q .ico{color:#0a6cff;font-size:22px;transition:.2s}
+.faq-item.open .faq-q .ico{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 24px;color:#555}
+.faq-item.open .faq-a{max-height:1200px;padding:0 24px 22px}
+.other{margin-top:60px;text-align:center}
+.other h2{font-size:22px;margin-bottom:22px;color:#1a2b4a}
+.other-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.other-links a{background:#fff;border:1px solid #e2e6ee;padding:12px 22px;border-radius:30px;font-weight:600;color:#0a6cff;transition:.2s;cursor:pointer}
+.other-links a:hover,.other-links a.active{background:#0a6cff;color:#fff}
+.app{background:#1a2b4a;color:#fff;margin-top:70px;padding:55px 20px;text-align:center}
+.app h2{font-size:26px;margin-bottom:14px}
+.app p{max-width:620px;margin:0 auto 26px;opacity:.9}
+.stores{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.store{background:#000;border:1px solid #444;border-radius:10px;padding:12px 22px;display:flex;align-items:center;gap:10px;font-weight:600}
+.store small{display:block;font-size:11px;opacity:.7;font-weight:400}
+footer{background:#11151c;color:#9aa3b2;text-align:center;padding:26px;font-size:14px}
+.page{display:none}
+.page.active{display:block}
+@media(max-width:600px){.hero h1{font-size:28px}nav a{margin-left:10px;font-size:13px}.about-card{padding:24px}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+<span>Just place your order — that's all it takes</span>
+<a href="tel:88109109">&#128222; 88-109-109</a>
+<a href="tel:90520077">&#128222; 9052-0077</a>
+</div></div>
+
+<header><div class="wrap">
+<a class="logo" data-nav="cleaning">PNS<span>.mn</span></a>
+<nav>
+<a data-nav="housekeeper">Housekeeper</a>
+<a data-nav="babysitter">Babysitter</a>
+<a data-nav="assistant">Assistant</a>
+<a data-nav="cleaning">Cleaning</a>
+<a data-nav="elderly">Caregiver</a>
+<a data-nav="about">About</a>
+<a data-nav="faq">FAQ</a>
+</nav>
+</div></header>
+
+<!-- ============ CLEANING (HOME) ============ -->
+<div class="page" id="cleaning">
+<section class="hero">
+<h1>Cleaning Services</h1>
+<p>Professional home &amp; office cleaning, delivered to your door.</p>
+</section>
+<div class="container">
+<h2 class="section-title">Our Cleaning Services</h2>
+<p class="section-sub">Choose the package that fits your needs</p>
+<div class="cards">
+<div class="card"><h3>Post-Construction Cleaning</h3><ul>
+<li>Windows washed and cleaned from the inside</li>
+<li>Removal of paint emulsion and other residues</li>
+<li>Full interior &amp; exterior cleaning of all hard-surface furniture in every room</li>
+</ul><a class="btn" data-nav="cleaning">Book Now</a></div>
+<div class="card"><h3>Office Cleaning</h3><ul>
+<li>Daily routine office cleaning performed</li>
+<li>Schedule a fixed day for regular recurring service</li>
+</ul><a class="btn" data-nav="cleaning">Book Now</a></div>
+<div class="card"><h3>Standard Cleaning</h3><ul>
+<li>Daily damp cleaning across all rooms of the home</li>
+<li>Kitchen, living room, bedrooms and smaller rooms all cleaned</li>
+</ul><a class="btn" data-nav="cleaning">Book Now</a></div>
+<div class="card"><h3>Deep Cleaning</h3><ul>
+<li>All hard-surface furniture washed inside and out</li>
+<li>Windows cleaned from the inside</li>
+<li>Cabinets cleaned in &amp; out, clothing and items neatly organized</li>
+<li>Kitchen furniture cleaned inside &amp; out; dishes and cookware washed</li>
+</ul><a class="btn" data-nav="cleaning">Book Now</a></div>
+</div>
+<div class="other"><h2>Services</h2><div class="other-links">
+<a data-nav="housekeeper" class="">Housekeeper</a>
+<a data-nav="babysitter" class="">Babysitter / Nanny</a>
+<a data-nav="assistant" class="">Personal Assistant</a>
+<a data-nav="cleaning" class="active">Cleaning</a>
+<a data-nav="elderly" class="">Elderly Caregiver</a>
+</div></div>
+</div>
+</div>
+
+<!-- ============ HOUSEKEEPER ============ -->
+<div class="page" id="housekeeper">
+<section class="hero"><div class="crumb">Services</div><h1>Housekeeper</h1></section>
+<div class="container">
+<p class="section-sub">Choose the work schedule that fits your household</p>
+<div class="cards">
+<div class="card"><h3>Live-in</h3><ul>
+<li>Lives in and works 6 days a week</li>
+<li>1 day off per week</li>
+<li>Daily damp cleaning of the home</li>
+<li>Prepares tasty, nutritious meals suited to the age and gender of all family members</li>
+<li>Performs a deep cleaning once every two weeks</li>
+<li>Handles laundry, ironing, and keeps closets neat and organized</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=105&serviceId=47" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+<div class="card"><h3>5 Working Days</h3><ul>
+<li>Works 5 days a week during working hours</li>
+<li>2 days off per week</li>
+<li>Daily damp cleaning of the home</li>
+<li>Prepares tasty, nutritious meals suited to the age and gender of all family members</li>
+<li>Performs a deep cleaning once every two weeks</li>
+<li>Handles laundry, ironing, and keeps closets neat and organized</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=106&serviceId=47" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+<div class="card"><h3>Selected Days</h3><ul>
+<li>Comes on 1&#8211;4 fixed days a week during working hours</li>
+<li>Performs damp cleaning of the home</li>
+<li>Prepares tasty, nutritious meals suited to the age and gender of all family members</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=107&serviceId=47" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+</div>
+<div class="other"><h2>Other Services</h2><div class="other-links">
+<a data-nav="housekeeper" class="active">Housekeeper</a>
+<a data-nav="babysitter" class="">Babysitter / Nanny</a>
+<a data-nav="assistant" class="">Personal Assistant</a>
+<a data-nav="cleaning" class="">Cleaning</a>
+<a data-nav="elderly" class="">Elderly Caregiver</a>
+</div></div>
+</div>
+</div>
+
+<!-- ============ BABYSITTER ============ -->
+<div class="page" id="babysitter">
+<section class="hero"><div class="crumb">Services</div><h1>Babysitter / Nanny</h1></section>
+<div class="container">
+<p class="section-sub">Choose the work schedule that fits your household</p>
+<div class="cards">
+<div class="card"><h3>Live-in</h3><ul>
+<li>Lives in and works 6 days a week</li>
+<li>1 day off per week</li>
+<li>Daily damp cleaning of the child's surrounding areas</li>
+<li>Prepares tasty, nutritious meals suited to the child's age and gender</li>
+<li>Handles the child's laundry, ironing, and keeps the closet neat</li>
+<li>Teaches developmental exercises suited to the child's age</li>
+<li>Takes the child outdoors for fresh air every day</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=95&serviceId=46" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+<div class="card"><h3>5 Working Days</h3><ul>
+<li>Works 5 days a week during working hours</li>
+<li>2 days off per week</li>
+<li>Daily damp cleaning of the child's surrounding areas</li>
+<li>Prepares tasty, nutritious meals suited to the child's age and gender</li>
+<li>Handles the child's laundry, ironing, and keeps the closet neat</li>
+<li>Teaches developmental exercises suited to the child's age</li>
+<li>Takes the child outdoors for fresh air every day</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=96&serviceId=46" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+<div class="card"><h3>Selected Days</h3><ul>
+<li>Comes on 1&#8211;4 fixed days a week during working hours</li>
+<li>Performs damp cleaning of the child's surrounding areas</li>
+<li>Prepares tasty, nutritious meals suited to the child's age and gender</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=97&serviceId=46" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+</div>
+<div class="other"><h2>Other Services</h2><div class="other-links">
+<a data-nav="housekeeper" class="">Housekeeper</a>
+<a data-nav="babysitter" class="active">Babysitter / Nanny</a>
+<a data-nav="assistant" class="">Personal Assistant</a>
+<a data-nav="cleaning" class="">Cleaning</a>
+<a data-nav="elderly" class="">Elderly Caregiver</a>
+</div></div>
+</div>
+</div>
+
+<!-- ============ PERSONAL ASSISTANT ============ -->
+<div class="page" id="assistant">
+<section class="hero"><div class="crumb">Services</div><h1>Personal Assistant</h1></section>
+<div class="container">
+<p class="section-sub">Choose the work schedule that fits your household</p>
+<div class="cards">
+<div class="card"><h3>Live-in</h3><ul>
+<li>Lives in and works 6 days a week</li>
+<li>1 day off per week</li>
+<li>Daily damp cleaning of the child's surrounding areas</li>
+<li>Prepares tasty, nutritious meals suited to the child's age and gender</li>
+<li>Handles the child's laundry, ironing, and keeps the closet neat</li>
+<li>Teaches developmental exercises suited to the child's age</li>
+<li>Takes the child outdoors for fresh air every day</li>
+<li>Assists the lady of the house with whatever she needs</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=98&serviceId=44" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+<div class="card"><h3>5 Working Days</h3><ul>
+<li>Works 5 days a week during working hours</li>
+<li>2 days off per week</li>
+<li>Daily damp cleaning of the child's surrounding areas</li>
+<li>Prepares tasty, nutritious meals suited to the child's age and gender</li>
+<li>Handles the child's laundry, ironing, and keeps the closet neat</li>
+<li>Teaches developmental exercises suited to the child's age</li>
+<li>Takes the child outdoors for fresh air every day</li>
+<li>Assists the lady of the house with whatever she needs</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=99&serviceId=44" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+<div class="card"><h3>Selected Days</h3><ul>
+<li>Comes on 1&#8211;4 fixed days a week during working hours</li>
+<li>Performs damp cleaning of the child's surrounding areas</li>
+<li>Prepares tasty, nutritious meals suited to the child's age and gender</li>
+<li>Assists the lady of the house with whatever she needs</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=100&serviceId=44" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+</div>
+<div class="other"><h2>Other Services</h2><div class="other-links">
+<a data-nav="housekeeper" class="">Housekeeper</a>
+<a data-nav="babysitter" class="">Babysitter / Nanny</a>
+<a data-nav="assistant" class="active">Personal Assistant</a>
+<a data-nav="cleaning" class="">Cleaning</a>
+<a data-nav="elderly" class="">Elderly Caregiver</a>
+</div></div>
+</div>
+</div>
+
+<!-- ============ ELDERLY CAREGIVER ============ -->
+<div class="page" id="elderly">
+<section class="hero"><div class="crumb">Services</div><h1>Elderly Caregiver</h1></section>
+<div class="container">
+<p class="section-sub">Choose the work schedule that fits your household</p>
+<div class="cards">
+<div class="card"><h3>Live-in</h3><ul>
+<li>Lives in and works 6 days a week</li>
+<li>1 day off per week</li>
+<li>Daily damp cleaning of the home</li>
+<li>Prepares tasty, nutritious meals suited to the client's age and gender</li>
+<li>Provides the necessary care for the client</li>
+<li>Handles laundry and ironing</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=49&serviceId=41" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+<div class="card"><h3>5 Working Days</h3><ul>
+<li>Works 5 days a week during working hours</li>
+<li>2 days off per week</li>
+<li>Daily damp cleaning of the home</li>
+<li>Prepares tasty, nutritious meals suited to the client's age and gender</li>
+<li>Provides the necessary care for the client</li>
+<li>Handles laundry and ironing</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=50&serviceId=41" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+<div class="card"><h3>Selected Days</h3><ul>
+<li>Comes on 1&#8211;4 fixed days a week during working hours</li>
+<li>Prepares tasty, nutritious meals suited to the client's age and gender</li>
+<li>Provides the necessary care for the client</li>
+</ul><a href="https://www.pns.mn/page/booking?plan=51&serviceId=41" class="btn" target="_blank" rel="noopener">Book Now</a></div>
+</div>
+<div class="other"><h2>Other Services</h2><div class="other-links">
+<a data-nav="housekeeper" class="">Housekeeper</a>
+<a data-nav="babysitter" class="">Babysitter / Nanny</a>
+<a data-nav="assistant" class="">Personal Assistant</a>
+<a data-nav="cleaning" class="">Cleaning</a>
+<a data-nav="elderly" class="active">Elderly Caregiver</a>
+</div></div>
+</div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<div class="page" id="about">
+<section class="hero"><div class="crumb">Company</div><h1>About Us</h1></section>
+<div class="container narrow">
+<div class="about-card">
+<h2>About Us</h2>
+<p>Professional Nanny Service LLC is an organization that prepares experienced, qualified childcare professionals for parents. We thoroughly research the background of every caregiver &mdash; conducting advance interviews and verifying details such as whether they have ever held any criminal liability.</p>
+<p>We comply with the <strong>ISO 9001:2015</strong> quality management system standard. We operate a domestic-service worker training center accredited by the <strong>Vocational Education and Training Center (MBSYT)</strong> under the Ministry of Labor and Social Protection.</p>
+<p>Professional Nanny Service trains its caregivers into qualified, professional childcare providers at its own training center.</p>
+<div>
+<span class="badge">ISO 9001:2015 Certified</span>
+<span class="badge">Accredited Training Center</span>
+<span class="badge">Vetted &amp; Background-Checked Staff</span>
+</div>
+</div>
+<div class="other"><h2>Services</h2><div class="other-links">
+<a data-nav="housekeeper" class="">Housekeeper</a>
+<a data-nav="babysitter" class="">Babysitter / Nanny</a>
+<a data-nav="assistant" class="">Personal Assistant</a>
+<a data-nav="cleaning" class="">Cleaning</a>
+<a data-nav="elderly" class="">Elderly Caregiver</a>
+</div></div>
+</div>
+</div>
+
+<!-- ============ FAQ ============ -->
+<div class="page" id="faq">
+<section class="hero"><div class="crumb">Help</div><h1>Frequently Asked Questions</h1></section>
+<div class="container narrow">
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What does a nanny do during the day?<span class="ico">+</span></div><div class="faq-a"><p>While caring for the child, the employee shall provide knowledge related to the child's age-specific and psychological characteristics, upbringing, and care and nursing. At all times, the employee has a duty to read books and magazines that promote the child's development, and to work in a manner suited to the child's age. The employee has a duty to dress the child according to the weather and physical condition, to take the child outside regularly for fresh air, and to air the child out in a location that ensures the child's safety while playing. If any abnormal behavior or unfavorable health condition is observed in the child, the employee shall immediately notify the lady of the house. If this occurs during a long absence of the parents (such as traveling to the countryside, going abroad, etc.), the employee has a duty to notify them by phone or other means and obtain instructions and advice, to administer medicine with permission, and to take the child to the doctor and hospital designated by the mother, respectively. The childcare worker has a duty to constantly sanitize and clean the child's clothing, toys, other belongings, and household items such as cups and spoons, and has a duty to carry out wet cleaning and ventilation daily in the area around the child in households with an infant, and 2-3 times a week in households with a child over 1 year of age. The childcare worker also performs tasks such as preparing healthy, good-quality, tasty food suitable for the child.</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How does pricing work?<span class="ico">+</span></div><div class="faq-a"><p>Pricing depends on the service type and the work schedule you choose. For exact current rates, please place an order through the app or call us at 88-109-109 and 7222-0077</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What training do the caregivers complete?<span class="ico">+</span></div><div class="faq-a"><p>All caregivers are trained at our own accredited training center, which operates under the Ministry of Labor and Social Protection (&#1052;&#1041;&#1057;&#1198;&#1058;). Training covers communication and attitude, personal development; cleaning and service; crime prevention; child growth, development, and child protection; childcare and nursing; food and nutrition preparation. And most importantly every caregivers will pass a official examination before we recommend them to you.</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What is a nanny's work schedule like?<span class="ico">+</span></div><div class="faq-a"><p>We offer three schedules: Live-in (6 days a week with 1 day off), 5 Working Days (5 days a week during working hours with 2 days off), and Selected Days (1&#8211;4 fixed days a week during working hours).</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What kinds of nannies are available?<span class="ico">+</span></div><div class="faq-a"><p>We will introduce you to people aged 18-45 who have undergone health examinations, had their personal information verified, and completed training, and you will be able to make your own selection.</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How do I place an order?<span class="ico">+</span></div><div class="faq-a"><p>You can place an order by calling 88-109-109 or through the order section of the website.</p></div></div>
+<div class="other"><h2>Services</h2><div class="other-links">
+<a data-nav="housekeeper" class="">Housekeeper</a>
+<a data-nav="babysitter" class="">Babysitter / Nanny</a>
+<a data-nav="assistant" class="">Personal Assistant</a>
+<a data-nav="cleaning" class="">Cleaning</a>
+<a data-nav="elderly" class="">Elderly Caregiver</a>
+</div></div>
+</div>
+</div>
+
+<section class="app">
+<h2>The Pns.mn App</h2>
+<p>The <strong>Pns.mn</strong> app for smartphones lets you book our services from anywhere you have an internet connection.</p>
+<div class="stores">
+<a class="store" href="#">&#9654; <span>GET IT ON<small>Google Play</small></span></a>
+<a class="store" href="#">&#127822; <span>Download on the<small>App Store</small></span></a>
+</div>
+</section>
+
+<footer>&copy; 2026 PNS.mn — Home Services. English version (translated). All rights reserved.</footer>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.dataset.nav===id));
+  document.querySelectorAll('.other-links a').forEach(a=>a.classList.toggle('active',a.dataset.nav===id));
+  window.scrollTo(0,0);
+  history.replaceState(null,'','#'+id);
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-nav]');
+  if(t){e.preventDefault();showPage(t.dataset.nav);}
+});
+const start=location.hash.replace('#','');
+showPage(document.getElementById(start)?start:'cleaning');
+</script>
+</body>
+</html>
